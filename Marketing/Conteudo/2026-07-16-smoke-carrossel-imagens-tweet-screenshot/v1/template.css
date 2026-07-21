@@ -1,0 +1,175 @@
+/* carrossel-imagens-tweet-screenshot — template.css
+ * Gerado por gerador-skills-carrosseis.
+ * Editar este arquivo para ajustes visuais. Re-rodar smoke-test após mudanças.
+ */
+
+/* ============================================================
+ * Design tokens
+ * ============================================================ */
+
+:root {
+  /* Color tokens — preto/branco/cinza puro, sem cor de marca */
+  --color-bg: #FFFFFF;
+  --color-text: #0F1419;
+  --color-muted: #536471;
+
+  /* Typography — fonte única de sistema, sem par display+corpo */
+  --font-sans: -apple-system, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+
+  --fs-name: 40px;
+  --fs-handle: 36px;
+  --fs-hook: 64px;
+  --fs-body: 46px;
+  --fs-cta-closing: 40px;
+
+  --lh-tight: 1.15;
+  --lh-hook: 1.2;
+  --lh-body: 1.4;
+
+  --ls-display: 0;
+  --ls-body: 0;
+
+  /* Spacing */
+  --space-xs: 8px;
+  --space-sm: 16px;
+  --space-md: 24px;
+  --space-lg: 40px;
+  --space-xl: 64px;
+
+  --margin-side: 64px;
+  --margin-top: 56px;
+  --margin-bottom: 56px;
+
+  /* Radius */
+  --radius-avatar: 50%;
+
+  /* Avatar */
+  --avatar-size: 96px;
+
+  /* Canvas */
+  --canvas-w: 1080px;
+  --canvas-h: 1440px;
+}
+
+/* ============================================================
+ * Reset + base
+ * ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body {
+  margin: 0; padding: 0;
+  font-family: var(--font-sans);
+  letter-spacing: var(--ls-body);
+  color: var(--color-text);
+  background: var(--color-bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* No italic — hard rule */
+em, i, address, cite, dfn, var {
+  font-style: normal;
+}
+
+/* ============================================================
+ * Slide canvas
+ * ============================================================ */
+
+.slide {
+  position: relative;
+  width: var(--canvas-w);
+  height: var(--canvas-h);
+  overflow: hidden;
+  background: var(--color-bg);
+  padding: var(--margin-top) var(--margin-side) var(--margin-bottom);
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* header+corpo centralizados como bloco único, fiel a um print real (não ancorado no topo) */
+}
+
+/* ============================================================
+ * Header fixo (avatar + nome + handle) — todos os arquétipos
+ * ============================================================ */
+
+.tweet-head {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-xl);
+  flex-shrink: 0;
+}
+
+.tweet-avatar {
+  width: var(--avatar-size);
+  height: var(--avatar-size);
+  border-radius: var(--radius-avatar);
+  object-fit: cover;
+  flex-shrink: 0;
+  display: block;
+}
+
+.tweet-idline {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.tweet-name {
+  font-size: var(--fs-name);
+  font-weight: 700;
+  line-height: var(--lh-tight);
+  color: var(--color-text);
+}
+
+.tweet-handle {
+  font-size: var(--fs-handle);
+  font-weight: 400;
+  line-height: var(--lh-tight);
+  color: var(--color-muted);
+}
+
+/* ============================================================
+ * Corpo do tweet
+ * ============================================================ */
+
+.tweet-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.tweet-body p {
+  margin: 0;
+  font-size: var(--fs-body);
+  font-weight: 400;
+  line-height: var(--lh-body);
+  color: var(--color-text);
+}
+
+.tweet-body p + p {
+  margin-top: var(--space-md);
+}
+
+/* capa: hook grande e bold, scroll-stopper */
+.tweet-hook {
+  font-size: var(--fs-hook) !important;
+  font-weight: 800 !important;
+  line-height: var(--lh-hook) !important;
+}
+
+/* cta: linha principal em peso normal, chamada final em destaque bold */
+.tweet-cta-lead {
+  font-size: var(--fs-body);
+  font-weight: 400;
+}
+
+.tweet-cta-closing {
+  font-size: var(--fs-cta-closing) !important;
+  font-weight: 700 !important;
+}
+
+/* ============================================================
+ * Arquétipos — sem CSS estrutural extra
+ * (capa, conteudo e cta compartilham o mesmo slot visual: header + body)
+ * ============================================================ */

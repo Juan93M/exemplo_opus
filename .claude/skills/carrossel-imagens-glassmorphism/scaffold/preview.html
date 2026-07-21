@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>carrossel-imagens-glassmorphism · preview</title>
+<style>
+  body {
+    margin: 0; padding: 32px;
+    background: #0D193C;
+    color: #FFFFFF;
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  }
+  h1 {
+    margin: 0 0 32px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    opacity: 0.7;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+    gap: 24px;
+  }
+  .slide-card {
+    background: #101B3E;
+    border-radius: 16px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  .slide-card img {
+    width: 100%;
+    display: block;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+  }
+  .slide-card .label {
+    padding: 12px 16px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px;
+    letter-spacing: 0.05em;
+    opacity: 0.7;
+  }
+</style>
+</head>
+<body>
+  <h1>carrossel-imagens-glassmorphism — preview</h1>
+  <div class="grid">
+    <!-- PREVIEW_SLOTS_START -->
+    <!-- Inserido dinamicamente pela skill no Step 7. Exemplo: -->
+    <!--
+    <div class="slide-card">
+      <img src="slide-01.png" alt="">
+      <div class="label">slide-01.png</div>
+    </div>
+    -->
+    <!-- PREVIEW_SLOTS_END -->
+  </div>
+</body>
+</html>

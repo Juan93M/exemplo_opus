@@ -1,0 +1,393 @@
+/* carrossel-imagens-glassmorphism — template.css
+ * Gerado por gerador-skills-carrosseis.
+ * Editar este arquivo para ajustes visuais. Re-rodar smoke-test após mudanças.
+ */
+
+@import url("https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap");
+
+/* ============================================================
+ * Design tokens
+ * ============================================================ */
+
+:root {
+  /* Color tokens */
+  --color-preto: #0D193C;
+  --color-preto-2: #081026;
+  --color-creme: #FFFFFF;
+  --color-creme-alt: #E8EAEF;
+  --color-surface-claro: #FFFFFF;
+  --color-surface-escuro: #101B3E;
+  --color-hero-navy: #0D193C;
+  --color-hero-blue-light: #4C8DFF; /* blob secundário (todos os fundos) + em em conteudo-escuro/hero */
+  --color-hero-blue-deep: #2F5FE0;  /* blob primário em fundo escuro (substitui navy, que sumiria sobre navy) */
+
+  /* Typography */
+  --font-display: 'Sora', system-ui, sans-serif;
+  --font-sans: 'Plus Jakarta Sans', 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  --fs-hero: 116px;
+  --fs-h1: 88px;
+  --fs-h2: 64px;
+  --fs-h3: 52px;
+  --fs-body-large: 52px;
+  --fs-body: 42px;
+  --fs-caption: 24px;
+
+  --lh-tight: 0.98;
+  --lh-display: 1.04;
+  --lh-body: 1.32;
+
+  --ls-display: -0.07em;
+  --ls-body: -0.02em;
+
+  /* Spacing */
+  --space-xs: 8px;
+  --space-sm: 16px;
+  --space-md: 24px;
+  --space-lg: 40px;
+  --space-xl: 64px;
+  --margin-side: 72px;
+  --margin-top: 72px;
+  --margin-bottom: 72px;
+
+  /* Radius */
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-pill: 9999px;
+  --radius-circle: 50%;
+
+  /* Canvas */
+  --canvas-w: 1080px;
+  --canvas-h: 1440px;
+
+  /* Glass tokens */
+  --g-bg-claro: rgba(255, 255, 255, 0.55);
+  --g-bg-escuro: rgba(255, 255, 255, 0.06);
+  --g-border-claro: rgba(13, 25, 60, 0.12);
+  --g-border-escuro: rgba(255, 255, 255, 0.10);
+  --g-blur: blur(24px);
+  --g-shadow-claro: 0 8px 32px rgba(13, 25, 60, 0.10), inset 0 1px 0 rgba(255, 255, 255, 0.7);
+  --g-shadow-escuro: 0 8px 32px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+/* ============================================================
+ * Reset + base
+ * ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body {
+  margin: 0; padding: 0;
+  font-family: var(--font-sans);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  letter-spacing: var(--ls-body);
+  color: var(--color-preto);
+  background: var(--color-creme);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* No italic — hard rule */
+em, i, address, cite, dfn, var {
+  font-style: normal;
+}
+
+em {
+  color: var(--color-hero-navy);
+  font-weight: 700;
+}
+
+/* ============================================================
+ * Slide canvas
+ * ============================================================ */
+
+.slide {
+  position: relative;
+  width: var(--canvas-w);
+  height: var(--canvas-h);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: var(--margin-top) var(--margin-side) var(--margin-bottom);
+}
+
+.slide p + p {
+  margin-top: var(--space-md);
+}
+
+/* ============================================================
+ * Header / footer
+ * ============================================================ */
+
+/* Não aplicável nesta skill. Nenhum arquétipo renderiza header ou footer fixo.
+   Identidade (Opus Automações / @opus.automacoes) só aparece se o texto do
+   roteiro (chamada_final / plug do CTA) mencionar explicitamente. */
+
+/* ============================================================
+ * Orb ambient — padrão de 2 blobs diagonais (2026-07-21)
+ * ============================================================ */
+
+/* Todo arquétipo usa os dois blobs juntos (nunca um sozinho): um no
+   canto superior-esquerdo (.orb-navy, mais escuro/saturado) e um no
+   canto inferior-direito (.orb-blue-light, sempre --color-hero-blue-light).
+   Em fundo claro, .orb-navy fica com --color-hero-navy. Em fundo escuro
+   (conteudo-escuro, conteudo-hero), .orb-navy é sobrescrito pra
+   --color-hero-blue-deep — navy sobre navy não gera brilho nenhum. */
+
+.orb-navy {
+  position: absolute;
+  width: 900px;
+  height: 900px;
+  border-radius: 50%;
+  background: var(--color-hero-navy);
+  filter: blur(140px);
+  opacity: 0.6;
+  top: 35%;
+  left: 28%;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+}
+
+.orb-blue-light {
+  position: absolute;
+  width: 800px;
+  height: 800px;
+  border-radius: 50%;
+  background: var(--color-hero-blue-light);
+  filter: blur(140px);
+  opacity: 0.6;
+  top: 68%;
+  left: 75%;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+}
+
+.card-inner {
+  position: relative;
+  z-index: 1;
+  padding: var(--space-xl) var(--space-lg);
+  border-radius: var(--radius-lg);
+}
+
+/* ============================================================
+ * Arquétipos
+ * ============================================================ */
+
+/* --- capa --- */
+
+.arquetipo-capa {
+  background: linear-gradient(160deg, var(--color-creme) 0%, var(--color-creme-alt) 100%);
+}
+
+.arquetipo-capa .card-inner {
+  background: var(--g-bg-claro);
+  backdrop-filter: var(--g-blur);
+  -webkit-backdrop-filter: var(--g-blur);
+  border: 1px solid var(--g-border-claro);
+  box-shadow: var(--g-shadow-claro);
+}
+
+.capa-titulo {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--fs-h2);
+  line-height: var(--lh-display);
+  letter-spacing: var(--ls-display);
+  color: var(--color-preto);
+  margin: 0;
+}
+
+.capa-destaque {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: var(--fs-body-large);
+  color: var(--color-hero-navy);
+  margin: var(--space-md) 0 0;
+}
+
+/* --- conteudo-claro --- */
+
+.arquetipo-conteudo-claro {
+  background: linear-gradient(160deg, var(--color-creme) 0%, var(--color-creme-alt) 100%);
+}
+
+.arquetipo-conteudo-claro .card-inner {
+  background: var(--g-bg-claro);
+  backdrop-filter: var(--g-blur);
+  -webkit-backdrop-filter: var(--g-blur);
+  border: 1px solid var(--g-border-claro);
+  box-shadow: var(--g-shadow-claro);
+  color: var(--color-preto);
+}
+
+/* --- conteudo-escuro --- */
+
+.arquetipo-conteudo-escuro {
+  background: var(--color-preto);
+}
+
+.arquetipo-conteudo-escuro .orb-navy {
+  background: var(--color-hero-blue-deep);
+}
+
+.arquetipo-conteudo-escuro .card-inner {
+  background: var(--g-bg-escuro);
+  backdrop-filter: var(--g-blur);
+  -webkit-backdrop-filter: var(--g-blur);
+  border: 1px solid var(--g-border-escuro);
+  box-shadow: var(--g-shadow-escuro);
+  color: var(--color-creme);
+}
+
+.arquetipo-conteudo-escuro em {
+  color: var(--color-hero-blue-light);
+}
+
+/* --- conteudo-hero --- */
+
+.arquetipo-conteudo-hero {
+  background: var(--color-hero-navy);
+  align-items: center;
+}
+
+.arquetipo-conteudo-hero .orb-navy {
+  background: var(--color-hero-blue-deep);
+}
+
+.arquetipo-conteudo-hero .card-inner {
+  background: var(--g-bg-escuro);
+  backdrop-filter: var(--g-blur);
+  -webkit-backdrop-filter: var(--g-blur);
+  border: 1px solid var(--g-border-escuro);
+  box-shadow: var(--g-shadow-escuro);
+  width: 70%;
+  margin: 0 auto;
+  text-align: center;
+  color: var(--color-creme);
+}
+
+.hero-titulo {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--fs-h2);
+  line-height: var(--lh-display);
+  letter-spacing: var(--ls-display);
+  margin: 0;
+  color: var(--color-creme);
+}
+
+.arquetipo-conteudo-hero .conteudo-destaque {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: var(--fs-body-large);
+  color: var(--color-hero-blue-light);
+  margin: var(--space-md) 0 0;
+}
+
+.arquetipo-conteudo-hero em {
+  color: var(--color-hero-blue-light);
+}
+
+/* --- conteudo (comum a claro/escuro) --- */
+
+.conteudo-titulo {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--fs-h1);
+  line-height: var(--lh-display);
+  letter-spacing: var(--ls-display);
+  margin: 0 0 var(--space-md);
+}
+
+.conteudo-texto-top p,
+.conteudo-texto-bottom p {
+  font-family: var(--font-sans);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  letter-spacing: var(--ls-body);
+  margin: 0;
+}
+
+.conteudo-texto-bottom {
+  margin-top: var(--space-lg);
+}
+
+/* --- cta --- */
+
+.arquetipo-cta {
+  background: linear-gradient(160deg, var(--color-creme) 0%, var(--color-creme-alt) 100%);
+}
+
+.arquetipo-cta .card-inner {
+  background: var(--g-bg-claro);
+  backdrop-filter: var(--g-blur);
+  -webkit-backdrop-filter: var(--g-blur);
+  border: 1px solid var(--g-border-claro);
+  box-shadow: var(--g-shadow-claro);
+  text-align: center;
+}
+
+.cta-titulo {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--fs-h2);
+  line-height: var(--lh-display);
+  letter-spacing: var(--ls-display);
+  color: var(--color-preto);
+  margin: 0;
+}
+
+.cta-chamada p {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: var(--fs-body);
+  color: var(--color-hero-navy);
+  margin: 0;
+}
+
+.cta-chamada {
+  margin-top: var(--space-lg);
+}
+
+.cta-plug {
+  font-family: var(--font-sans);
+  font-size: 22px;
+  opacity: 0.8;
+  margin-top: var(--space-lg);
+}
+
+/* ============================================================
+ * Fonte externa (atribuição)
+ * ============================================================ */
+
+.fonte-externa {
+  font-family: var(--font-mono);
+  font-size: var(--fs-caption);
+  letter-spacing: 0.02em;
+  opacity: 0.7;
+  display: block;
+  margin-top: var(--space-md);
+}
+
+/* ============================================================
+ * Footer logo (2026-07-21)
+ * ============================================================ */
+
+/* Presente em todos os arquétipos, centralizado na base do canvas.
+   Variante navy (assets/opus-logo-navy.png) em fundo claro (capa,
+   conteudo-claro, cta); variante branca (assets/opus-logo-white.png)
+   em fundo escuro (conteudo-escuro, conteudo-hero). A escolha da
+   variante é feita por quem gera o carrossel.html (ver workflow.md). */
+.footer-logo {
+  position: absolute;
+  bottom: 56px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  height: auto;
+  z-index: 2;
+  opacity: 0.92;
+}

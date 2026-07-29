@@ -108,6 +108,8 @@ Para o tema escolhido:
 
 3. Invoca a skill `carrossel-imagens-tema-tutorial` apontando pro `roteiro.md` gravado no passo 2. Em modo YOLO da routine, ela roda **sem imagem** (ver regra própria dela) — os campos `imagem:` do roteiro, se houver, são ignorados.
 
+4. **Espelhar a pasta inteira do carrossel pra dentro do repo (2026-07-29).** Depois que os PNGs finais existem em `vN/`, copiar a pasta completa do tema (`roteiro.md`, `roteiro-carrossel-instagram.md`, `legenda.md`, `vN/` inteira) de `C:\Users\juanp\Desktop\ideias_carrossel\<YYYY>\<MM>\<slug>\` pra `C:\Users\juanp\Desktop\projeto_opus_ai\Marketing\Conteudo\<slug>\`. As duas cópias ficam idênticas — `ideias_carrossel` continua sendo a fonte usada pro dedup (Hard rule de dedup lê de lá), o `projeto_opus_ai` é o espelho versionado em git. Não precisa perguntar, é passo automático do handoff.
+
 O slug segue o padrão: `<YYYY-MM-DD>-<slug-curto-do-tema>` (ex.: `2026-07-20-whatsapp-agendamento-clinica`).
 
 ---

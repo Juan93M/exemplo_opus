@@ -5,3 +5,4 @@ Ledger dos temas já escolhidos, usado pra dedup dos últimos 14 dias. Cada entr
 ---
 
 - **2026-07-29** — "Grave sua tela uma vez, deixe a IA repetir a tarefa sozinha" (Screenpipe) — bucket: Educativo — setor: produtores de conteúdo / consultores e freelancers de serviço — fonte: https://screenpipe.com + https://news.ycombinator.com/item?id=49024620 — slug: `2026-07-29-tela-gravada-vira-agente-ia`
+- **2026-08-04** — "A IA que lê o extrato bancário sozinha" (leitura de extrato em PDF com IA, Nibo) — bucket: Tutorial — setor: escritórios de contabilidade (serve também PME de serviço) — fonte: https://ajuda.nibo.com.br/pt-BR/articles/11648734-leitura-de-extrato-bancario-em-pdf-com-ia — slug: `2026-08-04-conciliacao-bancaria-ia-contabilidade`

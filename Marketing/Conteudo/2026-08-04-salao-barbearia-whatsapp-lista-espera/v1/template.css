@@ -1,0 +1,282 @@
+/* carrossel-imagens-tema-tutorial — template.css
+ * Gerado por gerador-skills-carrosseis.
+ * Editar este arquivo para ajustes visuais. Re-rodar smoke-test após mudanças.
+ */
+
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=JetBrains+Mono:wght@500;700&display=swap");
+
+/* ============================================================
+ * Design tokens
+ * ============================================================ */
+
+:root {
+  /* Color tokens */
+  --color-preto: #0E0E0E;
+  --color-creme: #FBF9F4;
+  --color-ink-headline: #231A12;
+  --color-ink-body: #5A4E3F;
+  --color-hero-laranja: #F84F2E;
+
+  /* Typography */
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-serif: 'Source Serif 4', Georgia, serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  --fs-headline: 62px;
+  --fs-subtitulo: 34px;
+  --fs-body: 40px;
+  --fs-tag: 30px;
+  --fs-handle: 26px;
+  --fs-caption: 24px;
+
+  --lh-display: 1.08;
+  --lh-body: 1.42;
+
+  --ls-display: -0.01em;
+  --ls-body: 0em;
+  --ls-tag: 0.06em;
+
+  /* Spacing */
+  --space-xs: 8px;
+  --space-sm: 16px;
+  --space-md: 24px;
+  --space-lg: 40px;
+  --space-xl: 64px;
+
+  --margin-frame: 64px;
+  --card-pad-x: 88px;
+  --card-pad-y: 96px;
+
+  /* Radius */
+  --radius-card: 8px;
+  --radius-image: 8px;
+  --radius-pill: 9999px;
+
+  /* Canvas */
+  --canvas-w: 1080px;
+  --canvas-h: 1440px;
+
+  /* Ticket shell */
+  --notch-w: 112px;
+  --notch-h: 56px;
+}
+
+/* ============================================================
+ * Reset + base
+ * ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body {
+  margin: 0; padding: 0;
+  font-family: var(--font-serif);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  letter-spacing: var(--ls-body);
+  color: var(--color-ink-body);
+  background: var(--color-preto);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* No italic — hard rule */
+em, i, address, cite, dfn, var {
+  font-style: normal;
+}
+
+em {
+  color: var(--color-hero-laranja);
+  font-weight: 600;
+}
+
+/* ============================================================
+ * Slide canvas — moldura preta full-bleed
+ * ============================================================ */
+
+.slide {
+  position: relative;
+  width: var(--canvas-w);
+  height: var(--canvas-h);
+  overflow: hidden;
+  background: var(--color-preto);
+  padding: var(--margin-frame);
+  display: flex;
+  flex-direction: column;
+}
+
+/* ============================================================
+ * Card creme + entalhes de ticket
+ * ============================================================ */
+
+.card {
+  position: relative;
+  flex: 1;
+  background: var(--color-creme);
+  border-radius: var(--radius-card);
+  padding: var(--card-pad-y) var(--card-pad-x);
+  display: flex;
+  flex-direction: column;
+}
+
+.card::before,
+.card::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: var(--notch-w);
+  height: var(--notch-h);
+  background: var(--color-preto);
+}
+
+.card::before {
+  top: 0;
+  border-radius: 0 0 999px 999px;
+}
+
+.card::after {
+  bottom: 0;
+  border-radius: 999px 999px 0 0;
+}
+
+.card > * + * {
+  margin-top: var(--space-md);
+}
+
+.card > .tag + * {
+  margin-top: var(--space-lg);
+}
+
+/* ============================================================
+ * Elementos comuns
+ * ============================================================ */
+
+.tag {
+  font-family: var(--font-mono);
+  font-size: var(--fs-tag);
+  font-weight: 700;
+  letter-spacing: var(--ls-tag);
+  text-transform: uppercase;
+  color: var(--color-hero-laranja);
+  margin: 0;
+}
+
+.headline {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--fs-headline);
+  line-height: var(--lh-display);
+  letter-spacing: var(--ls-display);
+  color: var(--color-ink-headline);
+  margin: 0;
+}
+
+.subtitulo {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: var(--fs-subtitulo);
+  line-height: var(--lh-body);
+  color: var(--color-ink-body);
+  margin: 0;
+}
+
+.texto p {
+  font-family: var(--font-serif);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  letter-spacing: var(--ls-body);
+  color: var(--color-ink-body);
+  margin: 0;
+}
+
+.texto p + p {
+  margin-top: var(--space-sm);
+}
+
+.imagem-slot {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: var(--radius-image);
+  border: 1px solid rgba(35, 26, 18, 0.12);
+  overflow: hidden;
+  background: rgba(35, 26, 18, 0.04);
+}
+
+.imagem-slot img,
+.imagem-slot svg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.fonte-externa {
+  font-family: var(--font-mono);
+  font-size: var(--fs-caption);
+  letter-spacing: 0.02em;
+  color: var(--color-ink-body);
+  opacity: 0.7;
+  display: block;
+}
+
+.plug {
+  font-family: var(--font-mono);
+  font-size: 22px;
+  color: var(--color-ink-body);
+  opacity: 0.75;
+}
+
+.cta-url {
+  font-family: var(--font-mono);
+  font-size: var(--fs-handle);
+  color: var(--color-ink-body);
+  opacity: 0.85;
+}
+
+/* ============================================================
+ * Footer fixo — @opus.automacoes (sempre presente, sempre igual)
+ * ============================================================ */
+
+.handle {
+  margin-top: auto;
+  padding-top: var(--space-md);
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: var(--fs-handle);
+  font-weight: 700;
+  letter-spacing: var(--ls-tag);
+  color: var(--color-hero-laranja);
+}
+
+/* ============================================================
+ * Arquétipos
+ * ============================================================ */
+
+/* --- capa --- */
+/* Usa os elementos comuns (.tag, .headline, .subtitulo) sem overrides. */
+
+/* --- conteudo --- */
+/* Usa .tag, .headline, .imagem-slot, .texto sem overrides. */
+
+/* --- cta --- */
+
+.arquetipo-cta .card {
+  text-align: center;
+}
+
+.arquetipo-cta .texto p,
+.arquetipo-cta .chamada-final p {
+  text-align: center;
+}
+
+.chamada-final p {
+  font-family: var(--font-serif);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  color: var(--color-ink-body);
+  margin: 0;
+}
+
+.chamada-final p + p {
+  margin-top: var(--space-sm);
+}

@@ -212,10 +212,13 @@ em {
 
 .capa-imagem {
   display: block;
-  width: 580px;
-  height: 502px;
-  max-width: 100%;
-  object-fit: contain;
+  width: 100%;
+  max-width: 720px;
+  height: auto;
+  aspect-ratio: 720 / 420;
+  object-fit: cover;
+  border-radius: var(--radius-image);
+  border: 1px solid rgba(35, 26, 18, 0.12);
   margin: var(--space-lg) auto 0;
 }
 

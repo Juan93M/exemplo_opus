@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>nota-fiscal-automatica-n8n-contabilidade · carrossel-imagens-tema-tutorial</title>
+<link rel="stylesheet" href="template.css">
+</head>
+<body>
+  <section class="slide arquetipo-capa" id="s1">
+    <div class="card">
+      <p class="tag">TUTORIAL</p>
+      <p class="headline">A nota fiscal chega o dia inteiro e alguém do escritório ainda digita cada uma na mão.</p>
+      <p class="subtitulo">Dá pra automatizar isso em poucos dias.</p>
+      <p class="handle">@opus.automacoes</p>
+    </div>
+  </section>
+  <section class="slide arquetipo-conteudo" id="s2">
+    <div class="card">
+      <p class="tag">O QUE É</p>
+      <p class="headline">O fluxo se chama automação de leitura de nota fiscal.</p>
+      <div class="texto">
+        <p>Um robô monitora a caixa de e-mail do escritório e lê o PDF ou a imagem da nota assim que ela chega.</p>
+        <p>Ele organiza os dados sozinho, usando OCR pra ler o documento e um modelo de IA pra interpretar o que foi lido.</p>
+        <p>Blogs técnicos como o horadecodar.com.br e o especialista contábil Roberto Dias Duarte já documentam esse fluxo rodando em escritórios de contabilidade no Brasil.</p>
+        <p class="fonte-externa">horadecodar.com.br e robertodiasduarte.com.br</p>
+      </div>
+      <p class="handle">@opus.automacoes</p>
+    </div>
+  </section>
+  <section class="slide arquetipo-conteudo" id="s3">
+    <div class="card">
+      <p class="tag">PASSO 1</p>
+      <p class="headline">Deixe o n8n de olho na caixa de e-mail.</p>
+      <div class="texto">
+        <p>O primeiro passo é configurar um gatilho no n8n que fica monitorando a caixa de entrada do escritório o tempo todo.</p>
+        <p>Assim que chega uma mensagem com nota fiscal ou boleto em PDF ou imagem anexada, o fluxo dispara sozinho, sem ninguém precisar abrir o e-mail pra perceber que a nota chegou.</p>
+      </div>
+      <p class="handle">@opus.automacoes</p>
+    </div>
+  </section>
+  <section class="slide arquetipo-conteudo" id="s4">
+    <div class="card">
+      <p class="tag">PASSO 2</p>
+      <p class="headline">O anexo é baixado sem ninguém tocar em nada.</p>
+      <div class="texto">
+        <p>Depois que o gatilho dispara, o próprio n8n baixa o arquivo anexado ao e-mail automaticamente.</p>
+        <p>Não existe a etapa de alguém entrar na caixa de entrada, abrir a nota, salvar o PDF numa pasta e só depois trabalhar em cima dele.</p>
+        <p>O download já acontece dentro do fluxo, como parte da mesma automação.</p>
+      </div>
+      <p class="handle">@opus.automacoes</p>
+    </div>
+  </section>
+  <section class="slide arquetipo-conteudo" id="s5">
+    <div class="card">
+      <p class="tag">PASSO 3</p>
+      <p class="headline">O OCR lê o documento e extrai o texto.</p>
+      <div class="texto">
+        <p>Aqui entra a leitura óptica de caracteres, o OCR.</p>
+        <p>As opções mais usadas nesse tipo de fluxo são o Google Vision, o AWS Textract, o Azure OCR ou o Tesseract, que é gratuito e de código aberto.</p>
+        <p>Qualquer uma delas lê a nota fiscal ou o boleto, seja PDF ou foto, e transforma aquilo em texto bruto que o resto do fluxo consegue interpretar.</p>
+      </div>
+      <p class="handle">@opus.automacoes</p>
+    </div>
+  </section>
+  <section class="slide arquetipo-conteudo" id="s6">
+    <div class="card">
+      <p class="tag">PASSO 4</p>
+      <p class="headline">A IA organiza os dados que interessam de verdade.</p>
+      <div class="texto">
+        <p>O texto bruto que sai do OCR ainda está desorganizado, então entra um modelo de IA, como o GPT da OpenAI, conectado ao fluxo por um nó de requisição HTTP.</p>
+        <p>Ele lê esse texto e separa os campos que o escritório precisa: CNPJ do emissor, valor da nota, data de emissão e natureza da operação.</p>
+      </div>
+      <p class="handle">@opus.automacoes</p>
+    </div>
+  </section>
+  <section class="slide arquetipo-conteudo" id="s7">
+    <div class="card">
+      <p class="tag">PASSO 5</p>
+      <p class="headline">A IA já sugere o lançamento contábil certo.</p>
+      <div class="texto">
+        <p>Com os campos organizados, a mesma IA classifica a natureza daquela operação e sugere o lançamento contábil correspondente, comparando a nota com o histórico de lançamentos daquele cliente específico.</p>
+        <p>É a diferença entre só extrair dado solto e entregar pro contador algo que já chega perto do lançamento pronto, prestes a ser conferido.</p>
+      </div>
+      <p class="handle">@opus.automacoes</p>
+    </div>
+  </section>
+  <section class="slide arquetipo-conteudo" id="s8">
+    <div class="card">
+      <p class="tag">PASSO 6</p>
+      <p class="headline">Os dados passam por uma limpeza antes de seguir.</p>
+      <div class="texto">
+        <p>Antes de qualquer coisa virar lançamento de verdade, o fluxo remove caracteres especiais e espaços em excesso que atrapalham a leitura, e valida os campos mais críticos, como CNPJ e valor.</p>
+        <p>Esse passo existe justamente pra pegar erro de OCR ou de leitura antes que ele vire um lançamento errado no sistema do escritório.</p>
+      </div>
+      <p class="handle">@opus.automacoes</p>
+    </div>
+  </section>
+  <section class="slide arquetipo-conteudo" id="s9">
+    <div class="card">
+      <p class="tag">PASSO 7</p>
+      <p class="headline">O lançamento vai pro sistema, ou pra revisão.</p>
+      <div class="texto">
+        <p>No final, o resultado é gravado automaticamente numa planilha do Google Sheets ou direto no sistema do escritório.</p>
+        <p>Quando alguma nota foge do padrão esperado, o fluxo não força o lançamento sozinho: ele sinaliza pra um humano revisar antes.</p>
+        <p>Tudo isso é montado no editor visual do n8n, sem escrever uma linha de código.</p>
+      </div>
+      <p class="handle">@opus.automacoes</p>
+    </div>
+  </section>
+  <section class="slide arquetipo-conteudo" id="s10">
+    <div class="card">
+      <p class="tag">RESULTADO</p>
+      <p class="headline">O tempo que sobra vira menos erro e mais controle.</p>
+      <div class="texto">
+        <p>Escritório que automatiza esse fluxo deixa de gastar horas por semana digitando nota fiscal e boleto na mão, e reduz o erro humano que gera lançamento errado e retrabalho depois.</p>
+        <p>Quem monta certo não precisa contratar mais gente pra dar conta do volume: o time passa a revisar exceção, não a digitar tudo do zero.</p>
+      </div>
+      <p class="handle">@opus.automacoes</p>
+    </div>
+  </section>
+  <section class="slide arquetipo-cta" id="s11">
+    <div class="card">
+      <p class="tag">RESUMO</p>
+      <p class="headline">Guarda esse passo a passo pra quando seu escritório for montar esse fluxo.</p>
+      <div class="chamada-final">
+        <p>Esse tipo de automação não sai do zero sozinho num fim de semana.</p>
+        <p>Dá pra contratar quem já monta esse fluxo pra escritórios de contabilidade, com n8n, OCR e IA rodando de ponta a ponta, como a Opus Automações.</p>
+      </div>
+      <p class="handle">@opus.automacoes</p>
+    </div>
+  </section>
+</body>
+</html>

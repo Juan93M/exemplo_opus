@@ -91,6 +91,17 @@ Antes de fechar o tema do dia:
 3. Descarte candidato que repita assunto ou setor recente (ex.: já postou sobre clínicas essa semana → próximo tema de clínica só se o ângulo for muito diferente). Entre dois bons candidatos de setores diferentes, prefira o que ainda não foi tocado nos últimos 14 dias.
 4. No fim da execução, **acrescente** o tema do dia ao `historico-temas.md` (data, título, setor/bucket, fonte).
 
+### Registrar no final — commit + push + verificação remota (obrigatório, não pular)
+
+O dedup só funciona se a entrada do ledger **chegar de fato no repositório remoto**. Ledger commitado só localmente não protege as rodadas seguintes — a próxima execução (numa sessão/container novo) clona do remoto e não enxerga o que ficou pendente de push. Por isso, depois de escrever a entrada no `historico-temas.md`, a rotina **só é considerada concluída** quando o commit estiver confirmado no remoto. Sequência obrigatória, nesta ordem:
+
+1. `git add` do `historico-temas.md` (e da pasta do carrossel espelhada, ver "Handoff").
+2. `git commit` com mensagem descritiva.
+3. `git push -u origin <branch>` (com retry/backoff em erro de rede).
+4. **SÓ ENTÃO** releia o estado remoto pra confirmar que o commit chegou de verdade: `git fetch origin <branch>` seguido de `git log origin/<branch>` (ou `git rev-parse origin/<branch>` comparado ao `HEAD` local). Confirme que o SHA do seu commit aparece no ramo remoto antes de dar a rotina como encerrada.
+
+**Push é gate de sucesso, não etapa opcional.** Se o push falhar por qualquer motivo (rede, permissão, conflito, o que for) ou se a verificação remota do passo 4 não encontrar o commit no remoto, isso é uma **falha dura da execução**: não siga em frente como se tivesse dado certo, não marque a rotina como concluída, e **sinalize o erro explicitamente no resultado da rotina** (o que falhou, em qual passo, e que o ledger/carrossel NÃO está garantido no repositório). Sem a confirmação remota, considere que o registro não aconteceu.
+
 ---
 
 ## Handoff — como dispara as skills de carrossel
